@@ -32,4 +32,36 @@ Karpenter is an open-source node provisioning project that automatically launche
 
 ### 1. Start Minikube
 ```bash
-minikube start --container-runtime=crio
+minikube start --nodes 2 --driver=docker
+
+kubectl get nodes
+
+terraform init
+
+kubectl apply -f karpenter-deployment.yaml
+
+kubectl -n karpenter get pods
+
+kubectl apply -f provisioner.yaml
+
+kubectl apply -f unschedulable-pod.yaml
+
+kubectl get pod unschedulable
+
+```
+### restart demo
+```bash
+kubectl delete -f unschedulable-pod.yaml
+kubectl delete -f provisioner.yaml
+terraform destroy -auto-approve
+kubectl delete -f karpenter-crds.yaml
+
+
+
+
+
+
+
+
+
+
