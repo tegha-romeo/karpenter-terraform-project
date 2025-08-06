@@ -1,0 +1,13 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: example
+spec:
+  requirements:
+    - key: "kubernetes.io/arch"
+      operator: In
+      values: ["amd64"]
+  limits:
+    resources:
+      cpu: "1000"
+  ttlSecondsAfterEmpty: 30

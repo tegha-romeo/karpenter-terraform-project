@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karpenter-controller
+  namespace: karpenter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: karpenter
+  template:
+    metadata:
+      labels:
+        app: karpenter
+    spec:
+      containers:
+        - name: controller
+          image: public.ecr.aws/karpenter/controller:v0.34.0
+          args:
+            - --metrics-port=8000
+          ports:
+            - containerPort: 8000
