@@ -55,13 +55,3 @@ kubectl delete -f unschedulable-pod.yaml
 kubectl delete -f provisioner.yaml
 terraform destroy -auto-approve
 kubectl delete -f karpenter-crds.yaml
-
-
-
-
-
-
-
-
-
-
