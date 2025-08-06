@@ -25,7 +25,3 @@ resource "kubectl_manifest" "karpenter_crds" {
   depends_on = [kubectl_manifest.karpenter_ns]
 }
 
-# resource "kubectl_manifest" "karpenter_controller" {
-#   yaml_body = file("${path.module}/karpenter-deployment.yaml")
-#   depends_on = [kubectl_manifest.karpenter_crds]
-# }
